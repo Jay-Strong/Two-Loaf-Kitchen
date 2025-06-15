@@ -14,8 +14,7 @@ app.secret_key = os.getenv("SECRET_KEY")
 email_password = os.getenv("EMAIL_PASSWORD")
 stripe_key = os.getenv("STRIPE_API_KEY")
 email_user = os.getenv("EMAIL_USERNAME")
-
-print("SECRET_KEY loaded:", os.getenv("SECRET_KEY"))
+app.config['EMAIL_USERNAME'] = email_user
 
 # Email Configuration (Gmail example)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
