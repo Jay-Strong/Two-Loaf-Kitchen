@@ -13,12 +13,13 @@ load_dotenv(dotenv_path=env_path)  # Loads variables from .env
 app.secret_key = os.getenv("SECRET_KEY")
 email_password = os.getenv("EMAIL_PASSWORD")
 stripe_key = os.getenv("STRIPE_API_KEY")
-
+email_user = os.getenv("EMAIL_USERNAME")
+print("SECRET_KEY loaded:", os.getenv("SECRET_KEY"))
 # Email Configuration (Gmail example)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'mannakim2004@gmail.com'  # Replace
+app.config['MAIL_USERNAME'] = email_user  # Replace
 app.config['MAIL_PASSWORD'] = email_password     # Use App Password if using Gmail
 mail = Mail(app)
 
