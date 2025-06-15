@@ -15,6 +15,7 @@ email_password = os.getenv("EMAIL_PASSWORD")
 stripe_key = os.getenv("STRIPE_API_KEY")
 email_user = os.getenv("EMAIL_USERNAME")
 app.config['EMAIL_USERNAME'] = email_user
+app.config['MAIL_DEFAULT_SENDER'] = email_user
 
 # Email Configuration (Gmail example)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -46,7 +47,7 @@ def order():
             subject = "Two Loaf Kitchen – Order Confirmation",
             sender=email_user,
             recipients=[email],
-            body = f"""Hi {name},
+            body=f"""Hi {name},
 
 Thanks for ordering {quantity} loaf/loaves of {bread_type} bread!
 
