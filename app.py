@@ -3,13 +3,14 @@ from flask_mail import Mail, Message
 import stripe
 import os
 from dotenv import load_dotenv
+# import gunicorn
 
 
 app = Flask(__name__)
 
 env_path = "C:\\Users\\jayal\\OneDrive\\Coding Projects\\Python\\keys.env"
 load_dotenv(dotenv_path=env_path)  # Loads variables from .env
-
+app.secret_key = os.getenv("SECRET_KEY")
 email_password = os.getenv("EMAIL_PASSWORD")
 stripe_key = os.getenv("STRIPE_API_KEY")
 
