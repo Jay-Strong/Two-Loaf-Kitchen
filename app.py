@@ -23,7 +23,7 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = email_user  # Replace
 app.config['MAIL_PASSWORD'] = email_password     # Use App Password if using Gmail
 mail = Mail(app)
-
+print(email_user)
 # Stripe Configuration
 stripe.api_key = stripe_key  # Replace with your Stripe secret key
 YOUR_DOMAIN = "https://two-loaf-kitchen.onrender.com"      # Replace when deploying
