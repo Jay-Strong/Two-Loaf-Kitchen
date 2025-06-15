@@ -45,7 +45,7 @@ def order():
         # Send confirmation email
         msg = Message(
             subject = "Two Loaf Kitchen – Order Confirmation",
-            sender=email_user
+            sender=email_user,
             recipients=[email])
 
         msg.body = f"""Hi {name},
