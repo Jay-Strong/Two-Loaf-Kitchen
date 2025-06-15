@@ -14,7 +14,9 @@ app.secret_key = os.getenv("SECRET_KEY")
 email_password = os.getenv("EMAIL_PASSWORD")
 stripe_key = os.getenv("STRIPE_API_KEY")
 email_user = os.getenv("EMAIL_USERNAME")
+
 print("SECRET_KEY loaded:", os.getenv("SECRET_KEY"))
+
 # Email Configuration (Gmail example)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -41,9 +43,11 @@ def order():
     # return render_template('order.html')
 
         # Send confirmation email
-        msg = Message("Two Loaf Kitchen – Order Confirmation",
-                      sender=app.config['MAIL_USERNAME'],
-                      recipients=[email])
+        msg = Message(
+            subject = "Two Loaf Kitchen – Order Confirmation",
+            sender=app.config['MAIL_USERNAME'],
+            recipients=[email])
+        
         msg.body = f"""Hi {name},
 
 Thanks for ordering {quantity} loaf/loaves of {bread_type} bread!
