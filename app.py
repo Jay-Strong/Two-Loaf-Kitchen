@@ -45,9 +45,9 @@ def order():
         # Send confirmation email
         msg = Message(
             subject = "Two Loaf Kitchen – Order Confirmation",
-            sender=app.config['MAIL_USERNAME'],
+            sender=email
             recipients=[email])
-        
+
         msg.body = f"""Hi {name},
 
 Thanks for ordering {quantity} loaf/loaves of {bread_type} bread!
