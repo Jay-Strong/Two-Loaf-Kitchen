@@ -45,9 +45,8 @@ def order():
         msg = Message(
             subject = "Two Loaf Kitchen – Order Confirmation",
             sender=email_user,
-            recipients=[email])
-
-        msg.body = f"""Hi {name},
+            recipients=[email],
+            body = f"""Hi {name},
 
 Thanks for ordering {quantity} loaf/loaves of {bread_type} bread!
 
@@ -55,6 +54,7 @@ We'll be in touch soon to confirm pickup/delivery details.
 
 Warm regards,  
 Jay – Two Loaf Kitchen"""
+        )
         mail.send(msg)
 
         # Create Stripe Checkout Session
