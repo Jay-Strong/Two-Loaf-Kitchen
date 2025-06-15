@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask_mail import Mail, Message
 import stripe
 import os
@@ -33,6 +33,10 @@ def order():
         bread_type = request.form["bread_type"]
         quantity = int(request.form["quantity"])
         price_per_loaf = 10  # in dollars
+        # Here you can add logic to process the order, e.g., save to database, send email, etc.
+        flash('Order placed successfully!', 'success')
+    #     return redirect(url_for('order'))
+    # return render_template('order.html')
 
         # Send confirmation email
         msg = Message("Two Loaf Kitchen – Order Confirmation",
