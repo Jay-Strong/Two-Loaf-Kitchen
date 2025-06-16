@@ -24,11 +24,11 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = email_user
 app.config['MAIL_PASSWORD'] = email_password     # Use App Password if using Gmail
 mail = Mail(app)
-print(email_user)
 # Stripe Configuration
 stripe.api_key = stripe_key
 YOUR_DOMAIN = "https://two-loaf-kitchen.onrender.com"
-
+print(email_user)
+print(f'{app.config['MAIL_DEFAULT_SENDER']}')
 @app.route("/", methods=["GET", "POST"])
 def order():
     if request.method == "POST":
@@ -41,7 +41,6 @@ def order():
         flash('Order placed successfully!', 'success')
     #     return redirect(url_for('order'))
     # return render_template('order.html')
-
         # Send confirmation email
         msg = Message(
             subject = "Two Loaf Kitchen – Order Confirmation",
