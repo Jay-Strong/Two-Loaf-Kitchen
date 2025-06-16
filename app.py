@@ -42,7 +42,7 @@ def order():
     #     return redirect(url_for('order'))
     # return render_template('order.html')
         # Send confirmation email
-        msg = Message(
+        msg1 = Message(
             subject = "Two Loaf Kitchen – Order Confirmation",
             sender=email_user,
             recipients=[email],
@@ -53,9 +53,39 @@ Thanks for ordering {quantity} loaf/loaves of {bread_type} bread!
 We'll be in touch soon to confirm pickup/delivery details.
 
 Warm regards,  
-Jay – Two Loaf Kitchen"""
+Two Loaf Kitchen"""
         )
-        mail.send(msg)
+        mail.send(msg1)
+        msg1 = Message(
+            subject = "Two Loaf Kitchen – Order Confirmation",
+            sender=email_user,
+            recipients=[email],
+            body=f"""Hi {name},
+
+Thanks for ordering {quantity} loaf/loaves of {bread_type} bread!
+
+We'll be in touch soon to confirm pickup/delivery details.
+
+Warm regards,  
+Two Loaf Kitchen"""
+        )
+        mail.send(msg1)
+
+        if email_user is not None:
+            msg2 = Message(
+                subject = "Two Loaf Kitchen – Order Placed ",
+                sender=email_user,
+                recipients=[email_user],
+                body=f"""Hi Amanda,
+
+{name} ordered {quantity} loaf/loaves of {bread_type} bread.
+
+Warm regards,  
+Two Loaf Kitchen"""
+            )
+            mail.send(msg2)
+        else:
+            print("Warning: EMAIL_USERNAME is not set. Admin notification email not sent.")
 
         # Create Stripe Checkout Session
         checkout_session = stripe.checkout.Session.create(
