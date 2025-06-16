@@ -21,13 +21,13 @@ app.config['MAIL_DEFAULT_SENDER'] = email_user
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = email_user  # Replace
+app.config['MAIL_USERNAME'] = email_user
 app.config['MAIL_PASSWORD'] = email_password     # Use App Password if using Gmail
 mail = Mail(app)
 print(email_user)
 # Stripe Configuration
-stripe.api_key = stripe_key  # Replace with your Stripe secret key
-YOUR_DOMAIN = "https://two-loaf-kitchen.onrender.com"      # Replace when deploying
+stripe.api_key = stripe_key
+YOUR_DOMAIN = "https://two-loaf-kitchen.onrender.com"
 
 @app.route("/", methods=["GET", "POST"])
 def order():
@@ -37,7 +37,7 @@ def order():
         bread_type = request.form["bread_type"]
         quantity = int(request.form["quantity"])
         price_per_loaf = 10  # in dollars
-        # Here you can add logic to process the order, e.g., save to database, send email, etc.
+        # Add logic here to process the order, e.g., save to database, send email, etc.
         flash('Order placed successfully!', 'success')
     #     return redirect(url_for('order'))
     # return render_template('order.html')
