@@ -12,7 +12,7 @@ env_path = "C:\\Users\\jayal\\OneDrive\\Coding Projects\\Python\\keys.env"
 load_dotenv(dotenv_path=env_path)  # Loads variables from .env
 app.secret_key = os.getenv("SECRET_KEY")
 email_password = os.getenv("EMAIL_PASSWORD")
-stripe_key = os.getenv("STRIPE_API_KEY")
+stripe_api_key = os.getenv("STRIPE_API_KEY")
 email_user = os.getenv("EMAIL_USERNAME")
 app.config['EMAIL_USERNAME'] = email_user
 app.config['MAIL_DEFAULT_SENDER'] = email_user
@@ -25,7 +25,7 @@ app.config['MAIL_USERNAME'] = email_user
 app.config['MAIL_PASSWORD'] = email_password     # Use App Password if using Gmail
 mail = Mail(app)
 # Stripe Configuration
-stripe.api_key = stripe_key
+stripe.api_key = stripe_api_key
 YOUR_DOMAIN = "https://two-loaf-kitchen.onrender.com"
 print(email_user)
 print(f'{app.config['MAIL_DEFAULT_SENDER']}')
